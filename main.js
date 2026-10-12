@@ -26,28 +26,15 @@ cpu.setQuirks(savedQuirks);
 loadQuirkUI(savedQuirks);
 
 const configOverlay = document.querySelector("#config-overlay");
-const debugOverlay = document.querySelector("#debug-overlay");
-
 const configBtn = document.querySelector("#config-btn");
-const debugBtn = document.querySelector("#debug-btn");
-
 const closeConfig = document.querySelector("#close-config");
-const closeDebug = document.querySelector("#close-debug");
 
 configBtn.addEventListener("click", () => {
     configOverlay.classList.add("active");
 });
 
-debugBtn.addEventListener("click", () => {
-    debugOverlay.classList.add("active");
-});
-
 closeConfig.addEventListener("click", () => {
     configOverlay.classList.remove("active");
-});
-
-closeDebug.addEventListener("click", () => {
-    debugOverlay.classList.remove("active");
 });
 
 document.addEventListener("keydown", (event) => {
@@ -55,28 +42,7 @@ document.addEventListener("keydown", (event) => {
         return;
 
     configOverlay.classList.remove("active");
-    debugOverlay.classList.remove("active");
 });
-
-function toHex(value, digits) {
-    return value.toString(16).toUpperCase().padStart(digits, "0");
-}
-
-function updateDebugState() {
-    document.querySelector("#debug-pc").textContent = toHex(cpu.PC, 4);
-    document.querySelector("#debug-i").textContent = toHex(cpu.I, 4);
-    document.querySelector("#debug-sp").textContent = toHex(cpu.SP, 2);
-    document.querySelector("#debug-dt").textContent = toHex(cpu.DT, 2);
-    document.querySelector("#debug-st").textContent = toHex(cpu.ST, 2);
-
-    for (let i = 0; i < 16; i++) {
-        const register = document.querySelector(
-            `#debug-v${i.toString(16)}`
-        );
-
-        register.textContent = toHex(cpu.V[i], 2);
-    }
-}
 
 let animationId = null;
 let paused = false;
@@ -165,7 +131,6 @@ function mainLoop()
     }
 
     video.render(cpu);
-    updateDebugState();
 
     animationId = requestAnimationFrame(mainLoop);
 }

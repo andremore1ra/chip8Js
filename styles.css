@@ -43,8 +43,7 @@ header h1 {
     text-transform: uppercase;
 }
 
-#config-btn,
-#debug-btn {
+#config-btn {
     position: absolute;
     width: 32px;
     height: 32px;
@@ -61,17 +60,11 @@ header h1 {
     right: 50px;
 }
 
-#debug-btn {
-    right: 14px;
-}
-
-#config-btn:hover,
-#debug-btn:hover {
+#config-btn:hover {
     opacity: .7;
 }
 
-#config-btn:active,
-#debug-btn:active {
+#config-btn:active {
     transform: translateY(1px);
 }
 
@@ -323,8 +316,7 @@ canvas {
     padding: 12px;
 }
 
-#config-overlay.active,
-#debug-overlay.active {
+#config-overlay.active {
     display: flex;
 }
 
@@ -383,66 +375,13 @@ canvas {
     cursor: pointer;
 }
 
-#close-config:hover,
-#close-debug:hover {
+#close-config:hover {
     filter: brightness(1.15);
 }
 
-#close-config:active,
-#close-debug:active {
+#close-config:active {
     transform: translateY(1px);
     filter: brightness(.95);
-}
-
-/* Debug */
-
-.debug-panel {
-    max-width: 520px;
-}
-
-.cpu-registers {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 6px;
-}
-
-.cpu-registers > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 46px;
-    background: var(--vid);
-    border: 1px solid var(--border);
-}
-
-.cpu-registers span,
-.v-registers span {
-    font-size: .65rem;
-    opacity: .7;
-}
-
-.cpu-registers strong,
-.v-registers strong {
-    font-size: .8rem;
-    font-weight: 500;
-    font-variant-numeric: tabular-nums;
-}
-
-.v-registers {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 6px;
-}
-
-.v-registers > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 42px;
-    background: var(--vid);
-    border: 1px solid var(--border);
 }
 
 /* Footer */
@@ -519,30 +458,6 @@ a:focus-visible {
 
     .keypad button {
         height: 58px;
-    }
-
-    .debug-panel {
-        max-width: none;
-        width: 95%;
-        padding: 14px;
-    }
-
-    .cpu-registers {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 4px;
-    }
-
-    .v-registers {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 4px;
-    }
-
-    .cpu-registers > div {
-        min-height: 42px;
-    }
-
-    .v-registers > div {
-        min-height: 40px;
     }
 }
 
