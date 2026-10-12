@@ -1,13 +1,13 @@
-import {Chip8} from './src/core/cpu.js';
-import {Video} from './src/devices/video.js';
-import {Audio} from './src/devices/audio.js';
-import {Keypad} from './src/devices/keypad.js';
+import {Chip8} from './cpu.js';
+import {Video} from './video.js';
+import {Audio} from './audio.js';
+import {Keypad} from './keypad.js';
 import {
     loadQuirkUI,
     readQuirkUI,
     loadSavedQuirks,
     saveQuirks
-} from "./src/system/config.js";
+} from "./config.js";
 
 const canvas =  document.getElementById("screen");
 const ctx = canvas.getContext("2d");
@@ -142,7 +142,6 @@ document.querySelectorAll("#config-overlay input[type=checkbox]").forEach(input 
     });
 });
 
-// Execute one emulator frame
 function mainLoop()
 {
     if (!paused) {

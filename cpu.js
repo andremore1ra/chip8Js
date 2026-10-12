@@ -1,5 +1,5 @@
-import {FONTSET} from '../assets/fontset.js';
-import {DEFAULT_QUIRKS} from '../system/quirks.js';
+import {FONTSET} from './fontset.js';
+import {DEFAULT_QUIRKS} from './quirks.js';
 
 const get_x = (op) => (op & 0x0F00) >> 8;
 const get_y = (op) => (op & 0x00F0) >> 4;
@@ -48,8 +48,6 @@ export class Chip8 {
     }
 
 
-    UNKNOWN_OPCODE(op) {    console.log(`UNKNOWN OPCODE 0x${op.toString(16)}`);    }
-
     // Load rom
 
     loadRom(romData) {
@@ -68,8 +66,8 @@ export class Chip8 {
 
     cpuInit() {
         console.log("--- Initializing CPU ---\n");
-        for (let i = 0; i < FONTSET.length; i++)
-            this.memory[i] = FONTSET[i];
+        this.memory.fill(0);
+        this.loadFontset();
     }
 
     
@@ -86,12 +84,14 @@ export class Chip8 {
         this.keyRegister = 0;
         this.DT = 0;
         this.ST = 0;
-
-        for (let i = 0; i < FONTSET.length; i++)
-            this.memory[i] = FONTSET[i];
-        
         this.displayWait = false;
         this.halted = false;
+        this.loadFontset();
+    }
+
+    loadFontset() {
+        for (let i = 0; i < FONTSET.length; i++)
+            this.memory[i] = FONTSET[i];
     }
 
 
@@ -160,7 +160,7 @@ export class Chip8 {
                 this.PC += (this.V[get_x(op)] === this.V[get_y(op)]) ? 4 : 2;
                 break;
             default:
-                this.UNKNOWN_OPCODE(op);
+                console.log(`UNKNOWN OPCODE 0x${op.toString(16)}`);
                 break;
             }
             break;
@@ -236,7 +236,7 @@ export class Chip8 {
                 break;
             }
             default:
-                this.UNKNOWN_OPCODE(op);
+                console.log(`UNKNOWN OPCODE 0x${op.toString(16)}`);
                 break;
             }
             break;
@@ -309,7 +309,7 @@ export class Chip8 {
                     this.PC += 2;
                 break;
             default:
-                this.UNKNOWN_OPCODE(op);
+                console.log(`UNKNOWN OPCODE 0x${op.toString(16)}`);
                 break;
             }
             break;
@@ -393,12 +393,12 @@ export class Chip8 {
                 break;
             }
             default:
-                this.UNKNOWN_OPCODE(op);
+                console.log(`UNKNOWN OPCODE 0x${op.toString(16)}`);
                 break;
             }
             break;
         default:
-            this.UNKNOWN_OPCODE(op);
+            console.log(`UNKNOWN OPCODE 0x${op.toString(16)}`);
             break;
         }
     }
