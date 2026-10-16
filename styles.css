@@ -7,16 +7,16 @@
 }
 
 :root {
-    --bg: #d4d4d4;
-    --vid: #c7c7c2;
-    --border: #a7a7a2;
-    --text: #1d1d1d;
-    --button-dark: #101010;
-    --button-shadow: #050505;
+    --bg-top: #000000;
+    --bg-bottom: #002b7f;
+    --keypad-panel: #dcdcd6;
+    --border: #001a4d;
+    --text: #f0ebf7;
 }
 
 body {
-    background: var(--bg);
+    background: linear-gradient(180deg, var(--bg-top) 50%, var(--bg-bottom) 50%);
+    background-attachment: fixed;
     color: var(--text);
     font-family: "IBM Plex Mono", monospace;
     min-height: 100dvh;
@@ -34,6 +34,8 @@ header {
     align-items: center;
     justify-content: center;
     position: relative;
+    background: var(--bg-top);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 header h1 {
@@ -53,11 +55,8 @@ header h1 {
     font-size: 1.2rem;
     cursor: pointer;
     color: var(--text);
+    right: 20px;
     transition: opacity .12s, transform .05s;
-}
-
-#config-btn {
-    right: 50px;
 }
 
 #config-btn:hover {
@@ -86,6 +85,7 @@ header h1 {
     align-items: center;
     justify-content: center;
     padding: 12px;
+    background: var(--bg-top);
 }
 
 canvas {
@@ -96,10 +96,10 @@ canvas {
     background: #000;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
-    border: 1px solid rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.12),
-        0 8px 18px rgba(0, 0, 0, 0.08);
+        0 2px 8px rgba(0, 0, 0, 0.8),
+        0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 /* Controls */
@@ -107,6 +107,9 @@ canvas {
 .controls {
     display: flex;
     flex-direction: column;
+    background-color: var(--bg-bottom);
+    background-image: none;
+    box-shadow: none;
 }
 
 .upload input {
@@ -118,7 +121,7 @@ canvas {
     justify-content: center;
     align-items: center;
     height: 46px;
-    background: var(--vid);
+    background: #002366;
     border-top: 1px solid var(--border);
     color: var(--text);
     cursor: pointer;
@@ -139,7 +142,7 @@ canvas {
 #pause-rom {
     height: 46px;
     border: 1px solid var(--border);
-    background: var(--vid);
+    background: #002366;
     font-family: inherit;
     font-size: inherit;
     color: var(--text);
@@ -152,21 +155,19 @@ canvas {
 #pause-rom {
     border-bottom: 1px solid var(--border);
     transition: transform .05s, filter .08s, background .12s;
-    box-shadow:
-        0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 .upload span:hover,
 #reset-rom:hover,
 #pause-rom:hover {
-    filter: brightness(.97);
+    filter: brightness(1.1);
 }
 
 .upload span:active,
 #reset-rom:active,
 #pause-rom:active {
     transform: translateY(1px);
-    filter: brightness(.95);
+    filter: brightness(.9);
 }
 
 .speed-control {
@@ -175,17 +176,15 @@ canvas {
     align-items: center;
     gap: 10px;
     padding: 0 14px;
-    background: var(--vid);
+    background: #001f5c;
     border-top: 1px solid var(--border);
     user-select: none;
     -webkit-user-select: none;
-    -webkit-touch-callout: none;
 }
 
 .speed-control span {
     font-size: .75rem;
     letter-spacing: .08em;
-    user-select: none;
 }
 
 .speed-control input[type="range"] {
@@ -196,9 +195,6 @@ canvas {
     background: var(--border);
     border-radius: 2px;
     outline: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: none;
 }
 
 .speed-control input[type="range"]::-webkit-slider-thumb {
@@ -227,79 +223,60 @@ canvas {
 .keypad {
     display: none;
     grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    padding: 10px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.10),
-            rgba(0,0,0,.06)
-        ),
-        var(--vid);
-    border-top: 1px solid var(--border);
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.18),
-        0 -2px 5px rgba(0,0,0,.08);
+    gap: 10px;
+    padding: 16px;
+    background-color: var(--keypad-panel);
+    border-top: 4px solid var(--bg-bottom);
+    box-shadow: inset 0 3px 8px rgba(0,0,0,.3);
 }
 
 .keypad button {
-    height: 64px;
-    border: 1px solid rgba(0,0,0,.28);
-    border-radius: 2px;
-    background:
-        linear-gradient(
-            145deg,
-            #eeeeea 0%,
-            #d8d8d3 48%,
-            #c1c1bc 100%
-        );
-    color: #252525;
+    height: 60px;
+    border: 1px solid #b5b5af;
+    border-radius: 3px;
+    background: linear-gradient(
+        145deg,
+        #ffffff 0%,
+        #f0f0eb 48%,
+        #dcdcd5 100%
+    );
+    color: #1a1a1a;
     font: inherit;
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 1.15rem;
+    font-weight: 700;
     cursor: pointer;
-    text-shadow: 0 1px 0 rgba(255,255,255,.7);
+    text-shadow: 0 1px 0 rgba(255,255,255,1);
     box-shadow:
-        0 4px 0 #969690,
-        0 5px 7px rgba(0,0,0,.18),
-        inset 0 1px 0 rgba(255,255,255,.8),
-        inset 0 -1px 0 rgba(0,0,0,.12);
-    transition:
-        transform .05s,
-        background .08s,
-        color .08s,
-        box-shadow .05s;
+        0 4px 0 #adada7,
+        0 5px 6px rgba(0,0,0,.15),
+        inset 0 1px 0 rgba(255,255,255,1);
+    transition: transform .05s, box-shadow .05s;
     user-select: none;
     -webkit-user-select: none;
-    -webkit-touch-callout: none;
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
 }
 
 .keypad button:hover {
-    background:
-        linear-gradient(
-            145deg,
-            #f3f3ef 0%,
-            #ddddda 48%,
-            #c7c7c2 100%
-        );
+    background: linear-gradient(
+        145deg,
+        #ffffff 0%,
+        #f5f5f0 48%,
+        #e2e2dc 100%
+    );
 }
 
 .keypad button:active {
     transform: translateY(4px);
-    background:
-        linear-gradient(
-            145deg,
-            #d1d1cc 0%,
-            #c2c2bd 100%
-        );
-    color: #111;
+    background: linear-gradient(
+        145deg,
+        #d0d0ca 0%,
+        #bebec5 100%
+    );
     box-shadow:
-        0 0 0 #969690,
-        0 2px 4px rgba(0,0,0,.18),
-        inset 0 2px 3px rgba(0,0,0,.16),
-        inset 0 1px 0 rgba(255,255,255,.35);
+        0 0 0 #adada7,
+        0 2px 3px rgba(0,0,0,.2),
+        inset 0 2px 3px rgba(0,0,0,.2);
 }
 
 /* Configuration */
@@ -309,7 +286,7 @@ canvas {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,.45);
+    background: rgba(0,0,0,.65);
     z-index: 100;
     align-items: center;
     justify-content: center;
@@ -325,12 +302,14 @@ canvas {
     max-width: 360px;
     max-height: 90dvh;
     overflow-y: auto;
-    background: var(--bg);
+    background: #002b7f;
     border: 1px solid var(--border);
     box-shadow:
         0 2px 4px rgba(0, 0, 0, .12),
-        0 10px 30px rgba(0, 0, 0, .18);
+        0 10px 30px rgba(0, 0, 0, .5);
     padding: 20px;
+    border-radius: 6px;
+    color: var(--text);
 }
 
 .config-panel h2 {
@@ -356,7 +335,7 @@ canvas {
 .config-panel input[type="checkbox"] {
     width: 18px;
     height: 18px;
-    accent-color: var(--text);
+    accent-color: #001a4d;
 }
 
 #close-config,
@@ -364,15 +343,16 @@ canvas {
     margin-top: 20px;
     width: 100%;
     height: 40px;
-    background: var(--button-dark);
-    color: white;
-    border: none;
+    background: #002366;
+    color: var(--text);
+    border: 1px solid var(--border);
     font-family: inherit;
     box-shadow:
-        0 2px 0 var(--button-shadow),
+        0 2px 0 #001433,
         0 4px 8px rgba(0, 0, 0, .12);
     transition: transform .05s, filter .08s;
     cursor: pointer;
+    border-radius: 4px;
 }
 
 #close-config:hover {
@@ -391,6 +371,7 @@ footer {
     text-align: center;
     padding: 10px;
     font-size: .8rem;
+    background: var(--bg-bottom);
     border-top: 1px solid var(--border);
     user-select: none;
     -webkit-user-select: none;
@@ -452,12 +433,12 @@ a:focus-visible {
 
     .keypad {
         display: grid;
-        flex: 0 0 232px;
+        flex: 0 0 auto;
         grid-template-columns: repeat(4, 1fr);
     }
 
     .keypad button {
-        height: 58px;
+        height: 56px;
     }
 }
 
