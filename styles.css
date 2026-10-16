@@ -8,9 +8,9 @@
 
 :root {
     --bg-top: #000000;
-    --bg-bottom: #002b7f;
+    --bg-bottom: #2D4C66;
     --keypad-panel: #dcdcd6;
-    --border: #001a4d;
+    --border: #18334a;
     --text: #f0ebf7;
 }
 
@@ -121,7 +121,7 @@ canvas {
     justify-content: center;
     align-items: center;
     height: 46px;
-    background: #002366;
+    background: #233c52;
     border-top: 1px solid var(--border);
     color: var(--text);
     cursor: pointer;
@@ -142,7 +142,7 @@ canvas {
 #pause-rom {
     height: 46px;
     border: 1px solid var(--border);
-    background: #002366;
+    background: #233c52;
     font-family: inherit;
     font-size: inherit;
     color: var(--text);
@@ -176,7 +176,7 @@ canvas {
     align-items: center;
     gap: 10px;
     padding: 0 14px;
-    background: #001f5c;
+    background: #1f374c;
     border-top: 1px solid var(--border);
     user-select: none;
     -webkit-user-select: none;
@@ -185,37 +185,38 @@ canvas {
 .speed-control span {
     font-size: .75rem;
     letter-spacing: .08em;
+    color: var(--text);
 }
 
 .speed-control input[type="range"] {
     flex: 1;
     appearance: none;
     -webkit-appearance: none;
-    height: 4px;
-    background: var(--border);
-    border-radius: 2px;
+    height: 6px;
+    background: #122230;
+    border-radius: 3px;
     outline: none;
 }
 
 .speed-control input[type="range"]::-webkit-slider-thumb {
     appearance: none;
     -webkit-appearance: none;
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     background: var(--text);
     cursor: pointer;
-    box-shadow: 0 1px 2px rgba(0,0,0,.18);
+    box-shadow: 0 1px 3px rgba(0,0,0,.3);
 }
 
 .speed-control input[type="range"]::-moz-range-thumb {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     border: none;
     border-radius: 50%;
     background: var(--text);
     cursor: pointer;
-    box-shadow: 0 1px 2px rgba(0,0,0,.18);
+    box-shadow: 0 1px 3px rgba(0,0,0,.3);
 }
 
 /* Mobile keypad */
@@ -302,7 +303,7 @@ canvas {
     max-width: 360px;
     max-height: 90dvh;
     overflow-y: auto;
-    background: #002b7f;
+    background: var(--bg-bottom);
     border: 1px solid var(--border);
     box-shadow:
         0 2px 4px rgba(0, 0, 0, .12),
@@ -335,7 +336,7 @@ canvas {
 .config-panel input[type="checkbox"] {
     width: 18px;
     height: 18px;
-    accent-color: #001a4d;
+    accent-color: #18334a;
 }
 
 #close-config,
@@ -343,12 +344,12 @@ canvas {
     margin-top: 20px;
     width: 100%;
     height: 40px;
-    background: #002366;
+    background: #233c52;
     color: var(--text);
     border: 1px solid var(--border);
     font-family: inherit;
     box-shadow:
-        0 2px 0 #001433,
+        0 2px 0 #122230,
         0 4px 8px rgba(0, 0, 0, .12);
     transition: transform .05s, filter .08s;
     cursor: pointer;
@@ -462,9 +463,5 @@ a:focus-visible {
         max-height: 96dvh;
     }
 
-    .controls,
-    .keypad,
-    footer {
-        display: none;
-    }
-}
+    .control
+    
