@@ -2,9 +2,9 @@
 
 A simple CHIP-8 emulator that runs directly in the browser.
 
-![Desktop](desktop.png)
+![Desktop](images/desktop.png)
 
-![Mobile](mobile.png)
+![Mobile](images/mobile.png)
 
 ## License
 
