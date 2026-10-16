@@ -48,9 +48,7 @@ export class Chip8 {
     }
 
 
-    // Load rom
-
-    loadRom(romData) {
+    cpuLoadRom(romData) {
         this.rom = new Uint8Array(romData);
 
         this.cpuReset();
@@ -67,7 +65,7 @@ export class Chip8 {
     cpuInit() {
         console.log("--- Initializing CPU ---\n");
         this.memory.fill(0);
-        this.loadFontset();
+        this.cpuLoadFontset();
     }
 
     
@@ -86,10 +84,10 @@ export class Chip8 {
         this.ST = 0;
         this.displayWait = false;
         this.halted = false;
-        this.loadFontset();
+        this.cpuLoadFontset();
     }
 
-    loadFontset() {
+    cpuLoadFontset() {
         for (let i = 0; i < FONTSET.length; i++)
             this.memory[i] = FONTSET[i];
     }

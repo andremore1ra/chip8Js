@@ -70,7 +70,7 @@ document.getElementById("rom-upload").addEventListener("change", async(event)  =
             animationId = null;
         } 
 
-        cpu.loadRom(rom);
+        cpu.cpuLoadRom(rom);
         animationId = requestAnimationFrame(mainLoop);
     } catch(error) {
         console.log("Error loading ROM: ", error);

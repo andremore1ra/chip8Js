@@ -463,5 +463,9 @@ a:focus-visible {
         max-height: 96dvh;
     }
 
-    .control
-    
+    .control,
+    .keypad,
+    footer {
+        display: none;
+    }
+} 
